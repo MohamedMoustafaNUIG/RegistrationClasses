@@ -8,5 +8,10 @@ build:
   ci:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
-    - shippable_retry mvn install
-    - cp -r target shippable/codecoverage
+    - mvn test
+    - mvn clean cobertura:cobertura
+        
+    #- shippable_retry mvn install
+    #- cp -r target shippable/codecoverage
+        
+        
