@@ -5,16 +5,23 @@ jdk:
   - oraclejdk8
 
 build:
-  ci:
-    - mkdir -p shippable/testresults
-    - mkdir -p shippable/codecoverage
-    - mvn test
-    - mvn clean cobertura:cobertura
-    
-    - mvn install
-    - cp -r target shippable/codecoverage
-        
-    #- shippable_retry mvn install
-    #- cp -r target shippable/codecoverage
-        
-        
+    cache: true
+    cache_dir_list:
+        - /root/.m2
+    ci:
+      - mkdir -p shippable/testresults
+      - mkdir -p shippable/codecoverage
+      - shippable_retry mvn install
+      - cp -r target shippable/codecoverage
+      #- cp -r $SHIPPABLE_BUILD_DIR/target shippable/codecoverage
+      #- mkdir -p shippable/buildoutput
+      #- cp -r $SHIPPABLE_BUILD_DIR/target ./shippable/buildoutput
+      
+      #- mvn test
+      #- mvn clean cobertura:cobertura
+
+      #- mvn install
+      #- cp -r target shippable/codecoverage
+
+      #- shippable_retry mvn install
+      #- cp -r target shippable/codecoverage
