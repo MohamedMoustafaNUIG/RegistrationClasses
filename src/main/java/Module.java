@@ -80,7 +80,7 @@ public class Module {
     }
     public void removeStudent(Student s){
         if(this.students.contains(s)){
-            this.students.add(s);
+            this.students.remove(s);
             s.removeModule(this);
         }
     }
@@ -101,7 +101,7 @@ public class Module {
     
     public void removeCourse(Course c){
         if(this.courses.contains(c)){
-            this.courses.add(c);
+            this.courses.remove(c);
             c.removeModule(this);
         }
     }

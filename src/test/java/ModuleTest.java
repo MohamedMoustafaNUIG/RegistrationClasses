@@ -61,4 +61,22 @@ public class ModuleTest {
         assertTrue(m1.getStudents().contains(expS));
         assertTrue(m1.getCourses().contains(expC));
     }
+    
+    @Test
+    public void testUnregistration(){
+        m1.setStudents(new ArrayList<Student>());
+        m1.setCourses(new ArrayList<Course>());
+        
+        m1.addStudent(s1);
+        m1.addCourse(c1);
+        
+        m1.removeStudent(s1);
+        m1.removeCourse(c1);
+        
+        Student notExpS = new Student("Mohamed Moustafa", 22, new DateTime("1998-11-21"), 1728);
+        Course notExpC = new Course("CS&IT", new DateTime("2020-08-01"), new DateTime("2021-05-25"));
+        
+       assertFalse(m1.getStudents().contains(notExpS));
+       assertFalse(m1.getCourses().contains(notExpC));
+    }
 }

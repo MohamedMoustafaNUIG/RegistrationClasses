@@ -91,7 +91,7 @@ public class Course {
     }
     public void removeStudent(Student s){
         if(this.students.contains(s)){
-            this.students.add(s);
+            this.students.remove(s);
             s.setCourse(null);
         }
     }
@@ -111,7 +111,7 @@ public class Course {
     }
     public void removeModule(Module m){
         if(this.modules.contains(m)){
-            this.modules.add(m);
+            this.modules.remove(m);
             m.removeCourse(this);
         }
     }

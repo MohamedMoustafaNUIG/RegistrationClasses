@@ -79,11 +79,11 @@ public class Module {
         }
 <span class="fc" id="L80">    }</span>
     public void removeStudent(Student s){
-<span class="nc bnc" id="L82" title="All 2 branches missed.">        if(this.students.contains(s)){</span>
-<span class="nc" id="L83">            this.students.add(s);</span>
-<span class="nc" id="L84">            s.removeModule(this);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if(this.students.contains(s)){</span>
+<span class="fc" id="L83">            this.students.remove(s);</span>
+<span class="fc" id="L84">            s.removeModule(this);</span>
         }
-<span class="nc" id="L86">    }</span>
+<span class="fc" id="L86">    }</span>
     public void printStudents(){
 <span class="nc" id="L88">        String buff = &quot;Students in module &quot;+ this.module_name+&quot;:\n&quot;;</span>
 <span class="nc bnc" id="L89" title="All 2 branches missed.">        for(Student s:this.students){</span>
@@ -100,11 +100,11 @@ public class Module {
 <span class="fc" id="L100">    }</span>
     
     public void removeCourse(Course c){
-<span class="nc bnc" id="L103" title="All 2 branches missed.">        if(this.courses.contains(c)){</span>
-<span class="nc" id="L104">            this.courses.add(c);</span>
-<span class="nc" id="L105">            c.removeModule(this);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if(this.courses.contains(c)){</span>
+<span class="fc" id="L104">            this.courses.remove(c);</span>
+<span class="fc" id="L105">            c.removeModule(this);</span>
         }
-<span class="nc" id="L107">    }</span>
+<span class="fc" id="L107">    }</span>
     public void printCourses(){
 <span class="nc" id="L109">        String buff = &quot;Courses with module &quot;+ this.module_name+&quot;:\n&quot;;</span>
 <span class="nc bnc" id="L110" title="All 2 branches missed.">        for(Course c:this.courses){</span>

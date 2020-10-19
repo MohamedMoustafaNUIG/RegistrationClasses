@@ -37,7 +37,7 @@ public class CourseTest {
     }
     
     @Test
-    public void testtRegistration(){
+    public void testRegistration(){
         c1.addStudent(s1);
         c1.addModule(m1);
         
@@ -46,5 +46,23 @@ public class CourseTest {
         
         assertTrue(c1.getStudents().contains(expS));
         assertTrue(c1.getModules().contains(expM));
+    }
+    
+    @Test
+    public void testUnregistration(){
+        c1.setStudents(new ArrayList<Student>());
+        c1.setModules(new ArrayList<Module>());
+        
+        c1.addStudent(s1);
+        c1.addModule(m1);
+        
+        c1.removeStudent(s1);
+        c1.removeModule(m1);
+        
+        Student notExpS = new Student("Mohamed Moustafa", 22, new DateTime("1998-11-21"), 1728);
+        Module notExpM = new Module("Programming", "CT101");
+        
+       assertFalse(c1.getStudents().contains(notExpS));
+       assertFalse(c1.getModules().contains(notExpM));
     }
 }

@@ -113,7 +113,7 @@ public class Student {
     
     public void removeModule(Module m){
         if(this.modules.contains(m)){
-            this.modules.add(m);
+            this.modules.remove(m);
             m.removeStudent(this);
         }
     }
