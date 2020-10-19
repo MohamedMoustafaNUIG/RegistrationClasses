@@ -1,8 +1,8 @@
-package tests;
+package org.nuig.mohdm.tests;
 
-import classes.Module;
-import classes.Course;
-import classes.Student;
+import org.nuig.mohdm.classes.Module;
+import org.nuig.mohdm.classes.Course;
+import org.nuig.mohdm.classes.Student;
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 
