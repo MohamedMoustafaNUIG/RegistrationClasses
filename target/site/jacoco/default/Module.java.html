@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Module.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RegistrationClasses</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Module.java</span></div><h1>Module.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author mohdm
+ */
+public class Module {
+    private String module_name;
+    private String id; 
+    private ArrayList&lt;Student&gt; students;
+    private ArrayList&lt;Course&gt; courses;
+    
+<span class="fc" id="L20">    public Module(String module_name, String id){</span>
+<span class="fc" id="L21">        this.module_name = module_name;</span>
+<span class="fc" id="L22">        this.id = id;</span>
+<span class="fc" id="L23">        this.students = new ArrayList&lt;Student&gt;(); </span>
+<span class="fc" id="L24">        this.courses = new ArrayList&lt;Course&gt;();</span>
+<span class="fc" id="L25">    }</span>
+    
+    @Override
+    public int hashCode(){
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        return this.id!= null? this.id.hashCode():0;</span>
+    }
+    
+    @Override
+    public boolean equals(Object o){
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if(this == o){return true;}</span>
+<span class="pc bpc" id="L35" title="2 of 4 branches missed.">        if(o == null || getClass()!= o.getClass()) {return false;}</span>
+        
+<span class="fc" id="L37">        Module temp = (Module) o;</span>
+        
+<span class="fc" id="L39">        return (this.id).equals(temp.getId());</span>
+    }
+    
+    public String getModule_name() {
+<span class="fc" id="L43">        return module_name;</span>
+    }
+
+    public void setModule_name(String module_name) {
+<span class="nc" id="L47">        this.module_name = module_name;</span>
+<span class="nc" id="L48">    }</span>
+
+    public String getId() {
+<span class="fc" id="L51">        return id;</span>
+    }
+
+    public void setId(String id) {
+<span class="nc" id="L55">        this.id = id;</span>
+<span class="nc" id="L56">    }</span>
+
+    public ArrayList&lt;Student&gt; getStudents() {
+<span class="fc" id="L59">        return students;</span>
+    }
+
+    public void setStudents(ArrayList&lt;Student&gt; students) {
+<span class="fc" id="L63">        this.students = students;</span>
+<span class="fc" id="L64">    }</span>
+
+    public ArrayList&lt;Course&gt; getCourses() {
+<span class="fc" id="L67">        return courses;</span>
+    }
+    
+    public void setCourses(ArrayList&lt;Course&gt; courses) {
+<span class="fc" id="L71">        this.courses = courses;</span>
+<span class="fc" id="L72">    }</span>
+    
+    //Added utility methods
+    public void addStudent(Student s){
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if(!this.students.contains(s)){</span>
+<span class="fc" id="L77">            this.students.add(s);</span>
+<span class="fc" id="L78">            s.addModule(this);</span>
+        }
+<span class="fc" id="L80">    }</span>
+    public void removeStudent(Student s){
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if(this.students.contains(s)){</span>
+<span class="nc" id="L83">            this.students.add(s);</span>
+<span class="nc" id="L84">            s.removeModule(this);</span>
+        }
+<span class="nc" id="L86">    }</span>
+    public void printStudents(){
+<span class="nc" id="L88">        String buff = &quot;Students in module &quot;+ this.module_name+&quot;:\n&quot;;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        for(Student s:this.students){</span>
+<span class="nc" id="L90">            buff+=s.getName()+&quot;\n&quot;;</span>
+<span class="nc" id="L91">        }</span>
+<span class="nc" id="L92">        System.out.println(buff);</span>
+<span class="nc" id="L93">    }</span>
+    
+    public void addCourse(Course c){
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        if(!this.courses.contains(c)){</span>
+<span class="fc" id="L97">            this.courses.add(c);</span>
+<span class="fc" id="L98">            c.addModule(this);</span>
+        }
+<span class="fc" id="L100">    }</span>
+    
+    public void removeCourse(Course c){
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        if(this.courses.contains(c)){</span>
+<span class="nc" id="L104">            this.courses.add(c);</span>
+<span class="nc" id="L105">            c.removeModule(this);</span>
+        }
+<span class="nc" id="L107">    }</span>
+    public void printCourses(){
+<span class="nc" id="L109">        String buff = &quot;Courses with module &quot;+ this.module_name+&quot;:\n&quot;;</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        for(Course c:this.courses){</span>
+<span class="nc" id="L111">            buff+=c.getCourse_name()+&quot;\n&quot;;</span>
+<span class="nc" id="L112">        }</span>
+<span class="nc" id="L113">        System.out.println(buff);</span>
+<span class="nc" id="L114">    }</span>
+    
+    @Override
+    public String toString(){
+<span class="nc" id="L118">        String temp=&quot;Module &quot;+this.module_name+&quot;\tId: &quot;+this.id;</span>
+<span class="nc" id="L119">        temp+=&quot;\nCourses: &quot;;</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        for(Course c:this.courses){</span>
+<span class="nc" id="L121">            temp+=c.getCourse_name();</span>
+<span class="nc" id="L122">            temp+=&quot;, &quot;;</span>
+<span class="nc" id="L123">        }</span>
+<span class="nc" id="L124">        temp = temp.substring(0, temp.length() - 2);</span>
+<span class="nc" id="L125">        temp+=&quot;\nStudents: &quot;;</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        for(Student s:this.students){</span>
+<span class="nc" id="L127">            temp+=s.getName();</span>
+<span class="nc" id="L128">            temp+=&quot;, &quot;;</span>
+<span class="nc" id="L129">        }</span>
+<span class="nc" id="L130">        temp = temp.substring(0, temp.length() - 2);</span>
+<span class="nc" id="L131">        return temp;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
