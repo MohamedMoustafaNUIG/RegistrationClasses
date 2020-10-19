@@ -95,6 +95,9 @@ public class Student {
 
     public void setCourse(Course course) {
         this.course = course;
+        /*In case we are removing the course from the course.removeStudent(), 
+        no need to add student to course*/
+        if (course!=null){course.addStudent(this);}
     }
 
     public ArrayList<Module> getModules() {
