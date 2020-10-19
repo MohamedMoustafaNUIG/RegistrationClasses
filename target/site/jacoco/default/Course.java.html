@@ -55,16 +55,16 @@ public class Course {
     }
 
     public void setModules(ArrayList&lt;Module&gt; modules) {
-<span class="nc" id="L58">        this.modules = modules;</span>
-<span class="nc" id="L59">    }</span>
+<span class="fc" id="L58">        this.modules = modules;</span>
+<span class="fc" id="L59">    }</span>
 
     public ArrayList&lt;Student&gt; getStudents() {
 <span class="fc" id="L62">        return students;</span>
     }
 
     public void setStudents(ArrayList&lt;Student&gt; students) {
-<span class="nc" id="L66">        this.students = students;</span>
-<span class="nc" id="L67">    }</span>
+<span class="fc" id="L66">        this.students = students;</span>
+<span class="fc" id="L67">    }</span>
 
     public DateTime getStart_date() {
 <span class="nc" id="L70">        return start_date;</span>
@@ -90,11 +90,11 @@ public class Course {
         }
 <span class="fc" id="L91">    }</span>
     public void removeStudent(Student s){
-<span class="nc bnc" id="L93" title="All 2 branches missed.">        if(this.students.contains(s)){</span>
-<span class="nc" id="L94">            this.students.add(s);</span>
-<span class="nc" id="L95">            s.setCourse(null);</span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if(this.students.contains(s)){</span>
+<span class="fc" id="L94">            this.students.remove(s);</span>
+<span class="fc" id="L95">            s.setCourse(null);</span>
         }
-<span class="nc" id="L97">    }</span>
+<span class="fc" id="L97">    }</span>
     public void printStudents(){
 <span class="nc" id="L99">        String buff = &quot;Students in course &quot;+ this.course_name+&quot;:\n&quot;;</span>
 <span class="nc bnc" id="L100" title="All 2 branches missed.">        for(Student s:this.students){</span>
@@ -110,11 +110,11 @@ public class Course {
         }
 <span class="fc" id="L111">    }</span>
     public void removeModule(Module m){
-<span class="nc bnc" id="L113" title="All 2 branches missed.">        if(this.modules.contains(m)){</span>
-<span class="nc" id="L114">            this.modules.add(m);</span>
-<span class="nc" id="L115">            m.removeCourse(this);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">        if(this.modules.contains(m)){</span>
+<span class="fc" id="L114">            this.modules.remove(m);</span>
+<span class="fc" id="L115">            m.removeCourse(this);</span>
         }
-<span class="nc" id="L117">    }</span>
+<span class="fc" id="L117">    }</span>
     public void printModules(){
 <span class="nc" id="L119">        String buff = &quot;Modules in course &quot;+ this.course_name+&quot;:\n&quot;;</span>
 <span class="nc bnc" id="L120" title="All 2 branches missed.">        for(Module m:this.modules){</span>
