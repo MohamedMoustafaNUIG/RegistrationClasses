@@ -52,8 +52,6 @@ public class Student {
     }
     
     public String getUsername(){
-        System.out.println(this.name);
-        System.out.println(Integer.toString(this.age));
         return (this.name + Integer.toString(this.age));
     }
     

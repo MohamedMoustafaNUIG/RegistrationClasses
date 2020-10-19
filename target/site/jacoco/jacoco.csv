@@ -1,4 +1,4 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 RegistrationClasses,org.nuig.mohdm.classes,Course,217,116,13,11,35,34,17,15,9,11
-RegistrationClasses,org.nuig.mohdm.classes,Student,174,117,7,11,34,31,15,15,10,11
+RegistrationClasses,org.nuig.mohdm.classes,Student,174,108,7,11,34,29,15,15,10,11
 RegistrationClasses,org.nuig.mohdm.classes,Module,212,116,12,12,31,34,13,17,6,12
