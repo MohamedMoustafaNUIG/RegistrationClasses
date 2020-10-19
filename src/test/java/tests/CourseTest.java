@@ -1,3 +1,8 @@
+package tests;
+
+import classes.Module;
+import classes.Course;
+import classes.Student;
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 

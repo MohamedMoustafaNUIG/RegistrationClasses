@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Course.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RegistrationClasses</a> &gt; <a href="index.source.html" class="el_package">classes</a> &gt; <span class="el_source">Course.java</span></div><h1>Course.java</h1><pre class="source lang-java linenums">package classes;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.util.ArrayList;
+import org.joda.time.DateTime;
+
+/**
+ *
+ * @author mohdm
+ */
+public class Course {
+    private String course_name;
+    private ArrayList&lt;Module&gt; modules;
+    private ArrayList&lt;Student&gt; students;
+    private DateTime start_date;
+    private DateTime end_date; 
+    
+<span class="fc" id="L24">    public Course(String course_name, DateTime start_date, DateTime end_date){</span>
+<span class="fc" id="L25">        this.course_name = course_name;</span>
+<span class="fc" id="L26">        this.modules = new ArrayList&lt;Module&gt;();</span>
+<span class="fc" id="L27">        this.students = new ArrayList&lt;Student&gt;();</span>
+<span class="fc" id="L28">        this.start_date = start_date;</span>
+<span class="fc" id="L29">        this.end_date = end_date;</span>
+<span class="fc" id="L30">    }</span>
+    
+    @Override
+    public int hashCode(){
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        return this.course_name==null? 0:this.course_name.hashCode();</span>
+    }
+    
+    @Override
+    public boolean equals(Object o){
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if(this == o){return true;}</span>
+<span class="pc bpc" id="L40" title="2 of 4 branches missed.">        if(o == null || getClass()!= o.getClass()) {return false;}</span>
+        
+<span class="fc" id="L42">        Course temp = (Course) o;</span>
+        
+<span class="fc" id="L44">        return (this.course_name).equals(temp.getCourse_name());</span>
+    }
+    
+    public String getCourse_name() {
+<span class="fc" id="L48">        return course_name;</span>
+    }
+
+    public void setCourse_name(String course_name) {
+<span class="nc" id="L52">        this.course_name = course_name;</span>
+<span class="nc" id="L53">    }</span>
+
+    public ArrayList&lt;Module&gt; getModules() {
+<span class="fc" id="L56">        return modules;</span>
+    }
+
+    public void setModules(ArrayList&lt;Module&gt; modules) {
+<span class="fc" id="L60">        this.modules = modules;</span>
+<span class="fc" id="L61">    }</span>
+
+    public ArrayList&lt;Student&gt; getStudents() {
+<span class="fc" id="L64">        return students;</span>
+    }
+
+    public void setStudents(ArrayList&lt;Student&gt; students) {
+<span class="fc" id="L68">        this.students = students;</span>
+<span class="fc" id="L69">    }</span>
+
+    public DateTime getStart_date() {
+<span class="nc" id="L72">        return start_date;</span>
+    }
+
+    public void setStart_date(DateTime start_date) {
+<span class="nc" id="L76">        this.start_date = start_date;</span>
+<span class="nc" id="L77">    }</span>
+
+    public DateTime getEnd_date() {
+<span class="nc" id="L80">        return end_date;</span>
+    }
+
+    public void setEnd_date(DateTime end_date) {
+<span class="nc" id="L84">        this.end_date = end_date;</span>
+<span class="nc" id="L85">    }</span>
+    
+    //Added utility methods
+    public void addStudent(Student s){
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if(!this.students.contains(s)){</span>
+<span class="fc" id="L90">            this.students.add(s);</span>
+<span class="fc" id="L91">            s.setCourse(this);</span>
+        }
+<span class="fc" id="L93">    }</span>
+    public void removeStudent(Student s){
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if(this.students.contains(s)){</span>
+<span class="fc" id="L96">            this.students.remove(s);</span>
+<span class="fc" id="L97">            s.setCourse(null);</span>
+        }
+<span class="fc" id="L99">    }</span>
+    public void printStudents(){
+<span class="nc" id="L101">        String buff = &quot;Students in course &quot;+ this.course_name+&quot;:\n&quot;;</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for(Student s:this.students){</span>
+<span class="nc" id="L103">            buff+=s.getName()+&quot;\n&quot;;</span>
+<span class="nc" id="L104">        }</span>
+<span class="nc" id="L105">        System.out.println(buff);</span>
+<span class="nc" id="L106">    }</span>
+    
+    public void addModule(Module m){
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        if(!this.modules.contains(m)){</span>
+<span class="fc" id="L110">            this.modules.add(m);</span>
+<span class="fc" id="L111">            m.addCourse(this);</span>
+        }
+<span class="fc" id="L113">    }</span>
+    public void removeModule(Module m){
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if(this.modules.contains(m)){</span>
+<span class="fc" id="L116">            this.modules.remove(m);</span>
+<span class="fc" id="L117">            m.removeCourse(this);</span>
+        }
+<span class="fc" id="L119">    }</span>
+    public void printModules(){
+<span class="nc" id="L121">        String buff = &quot;Modules in course &quot;+ this.course_name+&quot;:\n&quot;;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        for(Module m:this.modules){</span>
+<span class="nc" id="L123">            buff+=m.getModule_name()+&quot;\n&quot;;</span>
+<span class="nc" id="L124">        }</span>
+<span class="nc" id="L125">        System.out.println(buff);</span>
+<span class="nc" id="L126">    }</span>
+    
+    @Override
+    public String toString(){
+<span class="nc" id="L130">        String temp=&quot;Course &quot;+this.course_name;</span>
+<span class="nc" id="L131">        temp+=&quot;\nModules: &quot;;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        for(Module m:this.modules){</span>
+<span class="nc" id="L133">            temp+=m.getModule_name();</span>
+<span class="nc" id="L134">            temp+=&quot;, &quot;;</span>
+<span class="nc" id="L135">        }</span>
+<span class="nc" id="L136">        temp = temp.substring(0, temp.length() - 2);</span>
+<span class="nc" id="L137">        temp+=&quot;\nStudents: &quot;;</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        for(Student s:this.students){</span>
+<span class="nc" id="L139">            temp+=s.getName();</span>
+<span class="nc" id="L140">            temp+=&quot;, &quot;;</span>
+<span class="nc" id="L141">        }</span>
+<span class="nc" id="L142">        temp = temp.substring(0, temp.length() - 2);</span>
+<span class="nc" id="L143">        return temp;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
