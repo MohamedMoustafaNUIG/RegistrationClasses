@@ -92,55 +92,78 @@ public class Student {
     }
 
     public void setCourse(Course course) {
-<span class="fc" id="L95">        this.course = course;</span>
-        /*In case we are removing the course from the course.removeStudent(), 
-        no need to add student to course*/
-<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (course!=null){course.addStudent(this);}</span>
-<span class="fc" id="L99">    }</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if(this.course!=null){//If we are removing student from course</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            for(Module m:this.course.getModules()){//remove course modules</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">                if(this.modules.contains(m)){</span>
+<span class="nc" id="L98">                    this.modules.remove(m);</span>
+                }
+<span class="fc" id="L100">            }</span>
+            //If we are simply removing them from course
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">            if (course!=null){</span>
+<span class="nc" id="L103">                this.course.removeStudent(this);</span>
+<span class="nc" id="L104">                this.course = course;</span>
+<span class="nc" id="L105">                course.addStudent(this);</span>
+                
+            }else{
+<span class="fc" id="L108">                this.course.removeStudent(this);</span>
+<span class="fc" id="L109">                this.course=course;</span>
+            }
+        }else{//if we are setting course
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">            if(course!=null){//make sure new course isnt null</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">                for(Module m:course.getModules()){//add modules from course</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                    if(!this.modules.contains(m)){</span>
+<span class="nc" id="L115">                        this.modules.add(m);</span>
+                    }
+<span class="nc" id="L117">                }</span>
+<span class="fc" id="L118">                course.addStudent(this);//add student to course if not null</span>
+            }
+<span class="fc" id="L120">            this.course=course;//whether null or not, set it to student</span>
+        }
+<span class="fc" id="L122">    }</span>
 
     public ArrayList&lt;Module&gt; getModules() {
-<span class="fc" id="L102">        return modules;</span>
+<span class="fc" id="L125">        return modules;</span>
     }
 
     public void setModules(ArrayList&lt;Module&gt; modules) {
-<span class="fc" id="L106">        this.modules = modules;</span>
-<span class="fc" id="L107">    }</span>
+<span class="fc" id="L129">        this.modules = modules;</span>
+<span class="fc" id="L130">    }</span>
     
     //Added utility methods
     public void addModule(Module m){
-<span class="fc bfc" id="L111" title="All 2 branches covered.">        if(!this.modules.contains(m)){</span>
-<span class="fc" id="L112">            this.modules.add(m);</span>
-<span class="fc" id="L113">            m.addStudent(this);</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        if(!this.modules.contains(m)){</span>
+<span class="fc" id="L135">            this.modules.add(m);</span>
+<span class="fc" id="L136">            m.addStudent(this);</span>
         }   
-<span class="fc" id="L115">    }</span>
+<span class="fc" id="L138">    }</span>
     
     public void removeModule(Module m){
-<span class="fc bfc" id="L118" title="All 2 branches covered.">        if(this.modules.contains(m)){</span>
-<span class="fc" id="L119">            this.modules.remove(m);</span>
-<span class="fc" id="L120">            m.removeStudent(this);</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        if(this.modules.contains(m)){</span>
+<span class="fc" id="L142">            this.modules.remove(m);</span>
+<span class="fc" id="L143">            m.removeStudent(this);</span>
         }
-<span class="fc" id="L122">    }</span>
+<span class="fc" id="L145">    }</span>
     
     public void printModules(){
-<span class="nc" id="L125">        String buff = &quot;Modules for student &quot;+ this.name+&quot;:\n&quot;;</span>
-<span class="nc bnc" id="L126" title="All 2 branches missed.">        for(Module m:this.modules){</span>
-<span class="nc" id="L127">            buff+=m.getModule_name()+&quot;\n&quot;;</span>
-<span class="nc" id="L128">        }</span>
-<span class="nc" id="L129">        System.out.println(buff);</span>
-<span class="nc" id="L130">    }</span>
+<span class="nc" id="L148">        String buff = &quot;Modules for student &quot;+ this.name+&quot;:\n&quot;;</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        for(Module m:this.modules){</span>
+<span class="nc" id="L150">            buff+=m.getModule_name()+&quot;\n&quot;;</span>
+<span class="nc" id="L151">        }</span>
+<span class="nc" id="L152">        System.out.println(buff);</span>
+<span class="nc" id="L153">    }</span>
     
     @Override
     public String toString(){
-<span class="nc" id="L134">        String temp=&quot;Student &quot;+this.name+&quot;\tId: &quot;+this.id+&quot;\tUsername: &quot;+this.getUsername();</span>
-<span class="nc" id="L135">        temp+=&quot;\nCourse: &quot;+this.course.getCourse_name();</span>
-<span class="nc" id="L136">        temp+=&quot;\nModules: &quot;;</span>
-<span class="nc bnc" id="L137" title="All 2 branches missed.">        for(Module m:this.modules){</span>
-<span class="nc" id="L138">            temp+=m.getModule_name();</span>
-<span class="nc" id="L139">            temp+=&quot;, &quot;;</span>
-<span class="nc" id="L140">        }</span>
-<span class="nc" id="L141">        temp = temp.substring(0, temp.length() - 2);</span>
+<span class="nc" id="L157">        String temp=&quot;Student &quot;+this.name+&quot;\tId: &quot;+this.id+&quot;\tUsername: &quot;+this.getUsername();</span>
+<span class="nc" id="L158">        temp+=&quot;\nCourse: &quot;+this.course.getCourse_name();</span>
+<span class="nc" id="L159">        temp+=&quot;\nModules: &quot;;</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for(Module m:this.modules){</span>
+<span class="nc" id="L161">            temp+=m.getModule_name();</span>
+<span class="nc" id="L162">            temp+=&quot;, &quot;;</span>
+<span class="nc" id="L163">        }</span>
+<span class="nc" id="L164">        temp = temp.substring(0, temp.length() - 2);</span>
         
-<span class="nc" id="L143">        return temp;</span>
+<span class="nc" id="L166">        return temp;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

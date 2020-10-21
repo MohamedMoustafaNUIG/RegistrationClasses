@@ -92,10 +92,33 @@ public class Student {
     }
 
     public void setCourse(Course course) {
-        this.course = course;
-        /*In case we are removing the course from the course.removeStudent(), 
-        no need to add student to course*/
-        if (course!=null){course.addStudent(this);}
+        if(this.course!=null){//If we are removing student from course
+            for(Module m:this.course.getModules()){//remove course modules
+                if(this.modules.contains(m)){
+                    this.modules.remove(m);
+                }
+            }
+            //If we are simply removing them from course
+            if (course!=null){
+                this.course.removeStudent(this);
+                this.course = course;
+                course.addStudent(this);
+                
+            }else{
+                this.course.removeStudent(this);
+                this.course=course;
+            }
+        }else{//if we are setting course
+            if(course!=null){//make sure new course isnt null
+                for(Module m:course.getModules()){//add modules from course
+                    if(!this.modules.contains(m)){
+                        this.modules.add(m);
+                    }
+                }
+                course.addStudent(this);//add student to course if not null
+            }
+            this.course=course;//whether null or not, set it to student
+        }
     }
 
     public ArrayList<Module> getModules() {
