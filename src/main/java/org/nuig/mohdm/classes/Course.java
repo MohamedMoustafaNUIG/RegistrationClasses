@@ -14,7 +14,7 @@ import org.joda.time.DateTime;
  *
  * @author mohdm
  */
-public class Course {
+public class Course implements Comparable{
     private String course_name;
     private ArrayList<Module> modules;
     private ArrayList<Student> students;
@@ -141,5 +141,11 @@ public class Course {
         }
         temp = temp.substring(0, temp.length() - 2);
         return temp;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Course temp = (Course) o;
+        return this.hashCode() - temp.hashCode();
     }
 }

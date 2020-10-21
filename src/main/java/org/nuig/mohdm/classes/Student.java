@@ -13,7 +13,7 @@ import org.joda.time.DateTime;
  *
  * @author mohdm
  */
-public class Student {
+public class Student implements Comparable {
     private String name;
     private int age;
     private DateTime dob;
@@ -50,7 +50,7 @@ public class Student {
         
         return this.id == temp.getId();
     }
-    
+        
     public String getUsername(){
         return (this.name + Integer.toString(this.age));
     }
@@ -95,7 +95,7 @@ public class Student {
         if(this.course!=null){//If we are removing student from course
             for(Module m:this.course.getModules()){//remove course modules
                 if(this.modules.contains(m)){
-                    this.modules.remove(m);
+                    this.removeModule(m);
                 }
             }
             //If we are simply removing them from course
@@ -103,7 +103,6 @@ public class Student {
                 this.course.removeStudent(this);
                 this.course = course;
                 course.addStudent(this);
-                
             }else{
                 this.course.removeStudent(this);
                 this.course=course;
@@ -112,7 +111,7 @@ public class Student {
             if(course!=null){//make sure new course isnt null
                 for(Module m:course.getModules()){//add modules from course
                     if(!this.modules.contains(m)){
-                        this.modules.add(m);
+                        this.addModule(m);
                     }
                 }
                 course.addStudent(this);//add student to course if not null
@@ -164,5 +163,11 @@ public class Student {
         temp = temp.substring(0, temp.length() - 2);
         
         return temp;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Student temp = (Student) o;
+        return this.hashCode() - temp.hashCode();
     }
 }

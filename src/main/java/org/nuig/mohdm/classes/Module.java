@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author mohdm
  */
-public class Module {
+public class Module implements Comparable {
     private String module_name;
     private String id; 
     private ArrayList<Student> students;
@@ -131,5 +131,11 @@ public class Module {
         }
         temp = temp.substring(0, temp.length() - 2);
         return temp;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Module temp = (Module) o;
+        return this.hashCode() - temp.hashCode();
     }
 }

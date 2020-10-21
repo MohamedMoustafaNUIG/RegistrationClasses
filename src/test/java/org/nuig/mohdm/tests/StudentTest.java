@@ -4,6 +4,7 @@ import org.nuig.mohdm.classes.Module;
 import org.nuig.mohdm.classes.Course;
 import org.nuig.mohdm.classes.Student;
 import java.util.ArrayList;
+import java.util.Collections;
 import org.joda.time.DateTime;
 
 import org.junit.Before;
@@ -96,6 +97,25 @@ public class StudentTest {
         
         assertTrue(s1.getCourse().equals(expC1));
         assertTrue(s2.getCourse().equals(expC2));
+        
+        ArrayList<Module> mods1 = new ArrayList<Module>();
+        ArrayList<Module> mods2 = new ArrayList<Module>();
+        
+        mods1 = s1.getModules();
+        mods2 = expC1.getModules();
+        
+        Collections.sort(mods1);
+        Collections.sort(mods2);
+        
+        assertTrue(mods1.equals(mods2));
+        
+        mods1 = s2.getModules();
+        mods2 = expC2.getModules();
+        
+        Collections.sort(mods1);
+        Collections.sort(mods2);
+        
+        assertTrue(mods1.equals(mods2));
     }
     
     @Test
